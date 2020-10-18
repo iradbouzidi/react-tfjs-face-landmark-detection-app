@@ -21,9 +21,39 @@ function App() {
     }, 100);
   };
 
+  // Detect function
+  const detect = async (net) => {
+    if (
+      typeof webcamRef.current !== "undefined" &&
+      webcamRef.current !== null &&
+      webcamRef.current.video.readyState === 4
+    ) {
+      // Get Video Properties
+      const video = webcamRef.current.video;
+      const videoWidth = webcamRef.current.video.videoWidth;
+      const videoHeight = webcamRef.current.video.videoHeight;
+
+      // Set video width
+      webcamRef.current.video.width = videoWidth;
+      webcamRef.current.video.height = videoHeight;
+
+      // Set canvas width
+      canvasRef.current.width = videoWidth;
+      canvasRef.current.height = videoHeight;
+
+      // Make Detections
+      const face = await net.estimateFaces(video);
+      console.log("face: ", face);
+
+      // Get canvas context
+      //const ctx = canvasRef.current.getContext("2d");
+      //drawMesh(face, ctx);
+    }
+  };
+
+  runFacemesh();
   return (
     <div className="App">
-      
       <header className="App-header">
         <Webcam
           ref={webcamRef}
