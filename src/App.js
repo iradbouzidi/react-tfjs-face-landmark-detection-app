@@ -3,6 +3,8 @@ import * as tf from "@tensorflow/tfjs";
 import * as facemesh from "@tensorflow-models/facemesh";
 import Webcam from "react-webcam";
 import "./App.css";
+import { drawMesh } from "./utilities";
+
 
 function App() {
   // Setup references
@@ -46,8 +48,8 @@ function App() {
       console.log("face: ", face);
 
       // Get canvas context
-      //const ctx = canvasRef.current.getContext("2d");
-      //drawMesh(face, ctx);
+      const ctx = canvasRef.current.getContext("2d");
+      drawMesh(face, ctx);
     }
   };
 
