@@ -1,3 +1,4 @@
+//  Triangulation sets of three
 export const TRIANGULATION = [
   127,
   34,
