@@ -1,1 +1,1 @@
-https://react-tfjs-face-lm-detect-app.web.app/
+https://react-tfjs-face-landmark-detection-app.vercel.app/
